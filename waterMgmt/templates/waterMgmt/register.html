@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+    <form action='' method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="formField">
+        {{form.first_name.label}}: {{form.first_name}}
+      </div>
+      <div class="formField">
+        {{form.last_name.label}}: {{form.last_name}}
+      </div>
+      <div class="formField">
+        {{form.user_name.label}}: {{form.user_name}}
+      </div>
+      <div class="formField">
+        {{form.email.label}}: {{form.email}}
+      </div>
+      <div class="formField">
+        {{form.password.label}}: {{form.password}}
+      </div>
+      <div class="formField">
+        {{form.confirm_password.label}}: {{form.confirm_password}}
+      </div>
+      <div class="formField">
+        {{form.profile_pic.label}}: {{form.profile_pic}}
+      </div>
+      
+      <input type='submit' value='Submit' />  
+    </form>
+
+{% endblock %}

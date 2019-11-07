@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>RIAM</title>
+	 <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- leaflet css-->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+  <link rel="stylesheet" type="text/css" href="{% static 'waterMgmt/css/leaflet.css' %}">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'waterMgmt/css/bootstrap.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'waterMgmt/css/animate.css' %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- <script type="text/javascript">
+    jQuery(document).ready(function() {
+      jQuery('#vmap').vectorMap({ map: 'world_en' });
+    });
+    </script> -->
+
+<script>
+// jQuery('#vmap').vectorMap(
+// {
+//     map: 'world_en',
+//     backgroundColor: '#a5bfdd',
+//     borderColor: '#818181',
+//     borderOpacity: 0.25,
+//     borderWidth: 1,
+//     color: '#f4f3f0',
+//     enableZoom: true,
+//     hoverColor: '#c9dfaf',
+//     hoverOpacity: null,
+//     normalizeFunction: 'linear',
+//     scaleColors: ['#b6d6ff', '#005ace'],
+//     selectedColor: '#c9dfaf',
+//     selectedRegions: null,
+//     showTooltip: true,
+//     onRegionClick: function(element, code, region)
+//     {
+//         var message = 'You clicked "'
+//             + region
+//             + '" which has the code: '
+//             + code.toUpperCase();
+
+//         alert(message);
+//     }
+// });
+// </script>
+</head>
+<body>
+
+
+ 
+<div class="container-fluid main-head">
+	
+	<div class="row">
+		<div class="col-md-4 logo">
+			<img src="{% static 'waterMgmt/img/riam.jpg' %}" width="120px">
+		</div>
+          <!--  <div class="col-md-4">
+           	
+           </div> -->	
+			<div class="col-md-4 data4wash wash">
+		<h1><span class="data">data</span><span class="four">4</span><span class="wash">WASH</span></h1>
+		 <h4 class="good-cause">Bringing safe water closer</h4>
+		</div>
+		<div class="col-md-4 login">
+			<ul>
+        <!-- <li><a href="{% url 'login' %}?next={{request.path}}">Login</a></li> -->
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'profile' %}">User: {{user.get_username}}</a></li>
+        {% endif %}
+        <li><a href="{% url 'register' %}">Register</a></li>
+        <li><a href="{% url 'logout' %}?next={{request.path}}">Logout</a></li>
+			</ul>
+		</div>
+	</div>
+
+</div>
+<div class="container-fluid menu-fluid">
+	<div class="container">
+	
+	<nav class="navbar navbar-expand-md ">
+  <!-- Brand -->
+
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" >Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Maps</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About us</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">Our Services</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">Get in touch</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+</div>
+</div>
+
+<div class="container-fluid maps-container">
+  <div id="mapid"></div>
+  
+  <div class='overlay card'>        
+  </div>
+</div>
+
+<div class="container mid-container">
+	
+	<p class="top-text">Through our open source digital platform we are driving access to clean water and sanitation,creating opportunities for a healtier life for communities.</p>
+	<hr>
+	<div class="row">
+		<div class="col-md-6 img-mid">
+			<img src="{% static 'waterMgmt/img/data4wash.png' %}" width="100%">
+		</div>
+		<div class="col-md-6 data4wash">
+		<h1><span class="data">data</span><span class="four">4</span><span class="wash">WASH</span></h1>
+		 <h4 class="good-cause">Bringing safe water closer</h4>
+		 <p class="text-details">Access to clean water remains a challenge in low-income regions and underdeveloped communities. As of 2017, over 80 million Nigerians living in rural communities lacked access to basic social amenities because of absence of dependable data. The Rural Impact Accessibility Map project is a user-friendly digital platform that aggregates people-generated and verified data to encourage development at the grassroots level. The project works with young people to identify areas where WASH facilities can be constructed, bringing safe water closer to communities.</p>
+		 <a class="btn btn-primary" href="#" role="button">Donate For Clean Water</a>
+		</div>
+	</div>
+</div>
+ <div class="container prob-solve">
+ 	<p class="headline">790 million people without access to safe water</p>
+ 	<hr>
+ 	<div class="row">
+ 		
+ 		<div class="col-md-6">
+ 			<h3>The Problem</h3>
+ 			<p>Access to clean water remains a challenge in low-income regions and underdeveloped communities. An estimated 1.8 billion people (25% of the world's population) are without access to adequate sanitation.</p>
+ 		</div>
+ 		<div class="col-md-6">
+ 			<h3>The Solution</h3>
+ 			<p>Our goal is to drive access to clean water with data. We do this by creating a digital roadmap and together with government agencies, international organizations and the private sector we are striving to provide safe sustainable water and improved sewage treatment facilities.
+</p>
+ 		</div>
+ 	</div>
+ 	<br>
+ 	<hr>
+ 	<a class="btn btn-primary" href="#" role="button">Click this button to submit your data </a>
+ </div>
+
+ <div class="container-fluid footer">
+ 	<div class="row">
+ 		<div class="col-md-3">
+ 			
+ 		</div>
+ 		<div class="col-md-6">
+ 			<p>A partnership of BLI Global and MFCC. Copyright 2019 © All Rights Reserved.</p>
+ 		</div>
+ 		<div class="col-md-3">
+ 			
+ 		</div>
+
+ 	</div>
+ </div>
+<script type="text/javascript">
+  $(document).scroll(function(){
+  	   if ($(document).scrollTop() > 50){
+        $(".top-text").addClass("animated slideInDown");
+       }else{
+        $(".top-text").removeClass("animated slideInDown");
+       }
+       if ($(document).scrollTop() > 60){
+        $(".data4wash").addClass("animated slideInRight");
+       }else{
+        $(".data4wash").removeClass("animated slideInRight");
+       }
+
+       if ($(document).scrollTop() > 60){
+        $(".img-mid").addClass("animated slideInLeft");
+       }else{
+        $(".img-mid").removeClass("animated slideInLeft");
+       }
+
+
+       if ($(document).scrollTop() > 600){
+        $(".prob-solve").addClass("animated slideInUp");
+       }else{
+        $(".prob-solve").removeClass("animated slideInUp");
+       }
+    
+      });
+      
+</script>
+</body>
+
+<!-- Make sure you put this AFTER Leaflet's CSS -->
+<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+crossorigin=""></script>
+
+<!-- Make sure this is after leaflet script -->
+<script src="{% static 'waterMgmt/js/leaflet.js' %}"></script>
+
+</html>

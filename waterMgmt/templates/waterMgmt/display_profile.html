@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block css %}
+  <style>
+  .profilePic{
+    height: 200px;
+    width: 150px;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+  <div class='container-fluid'>
+    {% if profile %}
+      {% for p in profile %}
+        <p>Username: {{p.user.username}}</p>
+        <p>First Name: {{p.first_name}}</p>
+        <p>Last Name: {{p.last_name}}</p>    
+        <p>Email: {{p.email}}</p>
+        <p>Profile Pic: <img class='profilePic' src={{p.profile_pic.url}} /></p>
+      {% endfor %}
+    {% endif %}
+  </div>
+{% endblock %}
