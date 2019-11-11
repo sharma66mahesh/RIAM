@@ -38,15 +38,17 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 // });
 
 const content = [
-  "<h1>Solution</h1><p>Location: Abaji</p><p>Description: Water here is pure and safe for drinking.</p><p>Added By: Ashish</p>",
-  "<h1>Solution</h1><p>Location: Abuja</p><p>Description: Ground water is suitable for drinking after purification by using water filter and boiling.</p><p>Added By: Mahesh</p>",
-  "<h1>Problem</h1><p>Location: Saki West</p><p>Description: Water is not suitable for drinking. It has chemicals mixed in it which is not safe for drinking.</p><p>Added By: Maria</p>"
+  "<h1>Community: Zokutu</h1><p>State: FCT</p><p>Population: 3000+ (<i>Men:Women -> 60:40:00</i>)</p><p>Source of Water: Yes - River</p><p>Safe and clean water? <b>No</b></p><p>Government Presence: Yes (School and dilapidated health center)</p><p>Data Collection: In progress</p><p>Location: Abaji</p>",
+  "<h1>Community: Zhidu</h1><p>State: FCT</p><p>Population: 4500+ (<i>Men:Women -> 65:35:00</i>)</p><p>Source of Water: Yes - Stream</p><p>Safe and clean water? <b>No</b></p><p>Government Presence: Yes (School / health center)</p><p>Data Collection: Complete</p><p>Location: Abuja</p>",
+  "<h1>Community: Gosa Kpanyin Kpanyin</h1><p>State: FCT</p><p>Population: 2000+ (<i>Men:Women -> 50:50:00</i>)</p><p>Source of Water: Yes - River/inconsistent supply from private Tap</p><p>Safe and clean water? <b>No</b></p><p>Government Presence: N/A</p><p>Data Collection: Complete</p><p>Location: Saki West</p>",
+  "<h1>Community: Layi Papa</h1><p>State: Oyo State</p><p>Population: 1500+ </p><p>Source of Water: Yes - Stream</p><p>Safe and clean water? <b>No</b></p><p>Government Presence: Yes - Dilapidated school</p><p>Data Collection: Yet to commence</p><p>Location: Gosa</p>"
 ];
 
 let l1 = [8.476479,6.9415698];
 L.marker(l1).addTo(map).on('click', L.bind(onClick, null, 0));
 L.marker([8.9736178, 7.357235]).addTo(map).on('click', L.bind(onClick, null, 1));
 L.marker([8.6430879, 2.542606]).addTo(map).on('click', L.bind(onClick, null, 2));
+L.marker([8.9433516, 7.2950238]).addTo(map).on('click', L.bind(onClick, null, 3));
 
 
 function onClick(marker, e) {
